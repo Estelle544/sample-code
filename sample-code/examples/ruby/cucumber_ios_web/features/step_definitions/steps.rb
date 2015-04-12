@@ -13,24 +13,26 @@
 #
 # For more on rspec assertions, check out
 # https://www.relishapp.com/rspec/rspec-expectations/docs
-Given(/^I have entered ([^"]*) into Email field$/) do |value|
-  @driver.find_element(id:'fbemail').send_keys(value)
-  Selenium::WebDriver::Wait.new(timeout:2,message:'Text not entered into email').until { @driver.find_element(id:'fbemail').attribute('value').eql?value }
+
+Given(/^I am on guniapig home page$/) do
+  @page = GuniaPig.new(@driver)
+  @page.await
 end
 
-And(/^I have entered ([^"]*) into Comments field$/) do |value|
-  @driver.find_element(id:'comments').send_keys(value)
-  Selenium::WebDriver::Wait.new(timeout:2,message:'Text not entered into comments').until { @driver.find_element(id:'comments').attribute('value').eql?value }
-end
+ Given(/^I have entered ([^"]*) into Email field$/) do |email|
+   @page.enter_email(email)
+ end
 
-When(/^I click on ([^"]*)$/) do |va|
-  element = @driver.find_element(id:va)
-  raise 'No link found' unless element.displayed?
-  element.click
-  Selenium::WebDriver::Wait.new.until { @driver.title.start_with?'I am another page title' }
-end
+ And(/^I have entered ([^"]*) into Comments field$/) do |comment|
+   @page.enter_comments(comment)
+ end
 
-Then(/^I am on other page$/) do
-  element = @driver.find_element(id:'i_am_an_id')
-  raise "Doesn't open next page" unless element.text.eql?'I am another div'
-end
+ When(/^I click on ([^"]*)$/) do |link|
+   @page = @page.click_link(link)
+ end
+
+ Then(/^I am on other page$/) do
+   raise "Doesn't open next page" unless @page.class.equal?GuniaPig2 and @page.i_am_in_id.eql?'I am another div'
+ end
+
+
