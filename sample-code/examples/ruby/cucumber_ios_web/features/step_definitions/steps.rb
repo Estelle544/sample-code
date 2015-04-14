@@ -14,8 +14,10 @@
 # For more on rspec assertions, check out
 # https://www.relishapp.com/rspec/rspec-expectations/docs
 
+
+
 Given(/^I am on guniapig home page$/) do
-  @page = GuniaPig.new(@driver)
+  @page = GuniaPig.new(@browser)
   @page.await
 end
 
@@ -32,7 +34,7 @@ end
  end
 
  Then(/^I am on other page$/) do
-   raise "Doesn't open next page" unless @page.class.equal?GuniaPig2 and @page.i_am_in_id.eql?'I am another div'
+   raise "Doesn't open next page" unless @page.class.equal?GuniaPig2 and @page.am_an_id_text.eql?'I am another div'
  end
 
 
