@@ -20,7 +20,7 @@
 #
 # 1.  Start Appium in a terminal window
 # 2.  From another terminal window, open the cucumber example directory at 
-#     appium/sample-code/examples/ruby/cucumber_web/
+#     appium/sample-code/examples/ruby/cucumber_ios_web/
 # 3.  type 'cucumber' and hit enter
 # 4.  If you see '1 scenario (1 passed)' and some other stuff, SUCCESS! The
 #     test passed.  If you didn't, BOOOO, that's not right.  Make sure you've
@@ -35,14 +35,14 @@
 # https://github.com/cucumber/cucumber/wiki/Feature-Introduction
 
 
-  Feature:
-  In order to explore mobile web,
-  As a mobile web QA developer
-  I want to check elements in guniapig
+   Feature:
+   In order to explore mobile web,
+   As a mobile web QA developer
+   I want to check elements in guniapig
 
-  Scenario: Enter email and comments
-    Given I am on guniapig home page
-    When I have entered sandbox.example@guniapig.com into Email field
-    And I have entered 'Test comments' into Comments field
-    And I click on i am a link
-    Then I am on other page
+   Scenario: Enter email and comments
+     Given I am on guniapig home page
+     When I have entered sandbox.example@guniapig.com into Email field
+     And I have entered 'Test comments' into Comments field
+     And I click on i am a link
+     Then I am on other page

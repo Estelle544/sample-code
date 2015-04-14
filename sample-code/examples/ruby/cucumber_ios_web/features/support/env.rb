@@ -4,7 +4,6 @@
 # put shared data like the location of your app, the capabilities you want to
 # test with, and the setup of selenium.
 
-require 'rspec/expectations'
 require 'appium_lib'
 require 'cucumber/ast'
 require 'selenium-webdriver'
@@ -23,8 +22,8 @@ World do
 end
 
 Before {
-  @driver = $driver.start_driver
-  @driver.get('http://saucelabs.com/test/guinea-pig')
-  Selenium::WebDriver::Wait.new(timeout:3).until { @driver.title.start_with?'I am a page title'  }
+  @browser = $driver.start_driver
+  @browser.get('http://saucelabs.com/test/guinea-pig')
+  Selenium::WebDriver::Wait.new(timeout:3).until { @browser.title.start_with?'I am a page title'  }
 }
 After { $driver.driver_quit }
