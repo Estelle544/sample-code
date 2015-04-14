@@ -13,7 +13,13 @@
 #
 # For more on rspec assertions, check out
 # https://www.relishapp.com/rspec/rspec-expectations/docs
-Given(/^I have entered ([^"]*) into Email field$/) do |value|
+
+Given(/^I am on guniapig home page$/) do
+  pending # express the regexp above with the code you wish you had
+end
+
+
+When(/^I have entered ([^"]*) into Email field$/) do |value|
   @driver.find_element(id:'fbemail').send_keys(value)
   Selenium::WebDriver::Wait.new(timeout:2,message:'Text not entered into email').until { @driver.find_element(id:'fbemail').attribute('value').eql?value }
 end
@@ -23,7 +29,7 @@ And(/^I have entered ([^"]*) into Comments field$/) do |value|
   Selenium::WebDriver::Wait.new(timeout:2,message:'Text not entered into comments').until { @driver.find_element(id:'comments').attribute('value').eql?value }
 end
 
-When(/^I click on ([^"]*)$/) do |va|
+And(/^I click on ([^"]*)$/) do |va|
   element = @driver.find_element(id:va)
   raise 'No link found' unless element.displayed?
   element.click

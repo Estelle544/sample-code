@@ -36,12 +36,13 @@
 
 
   Feature:
-  In order to explore mobile web
-  As an mobile web QA developer
+  In order to explore mobile web,
+  As a mobile web QA developer
   I want to check elements in guniapig
 
   Scenario: Enter email and comments
-    Given I have entered sandbox.example@guniapig.com into Email field
+    Given I am on guniapig home page
+    When I have entered sandbox.example@guniapig.com into Email field
     And I have entered 'Test comments' into Comments field
-    When I click on i am a link
+    And I click on i am a link
     Then I am on other page
